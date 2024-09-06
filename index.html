@@ -1,49 +1,95 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns="http://www.w3.org/1999/html">
-<link rel="stylesheet" href="style.css">
+
+<html lang="ru">
+
 <head>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=SUSE:wght@100..800&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Сайт</title>
 </head>
+
 <body>
     <header>
-        <nav>
-            <a href='#'>Обо мне</a>
-            <a href='#'>Навыки</a>
-            <a href='#'>Портфолио</a>
-        </nav>
+        <section id="choose" class="fast_travel">
+             <h1>Food Construct</h1>
+             <nav>
+                 <h3>
+                 <a href='#about_us'>О нас</a>
+                 <a href='#'>Собрать ланч</a>
+                 <a href='#'>Заказы</a>
+                 <a href='#contacts'>Контакты</a>
+                 </h3>
+             </nav>
+        </section>
     </header>
 
     <main>
-        <section id="main_info">
-            <h1>Сайт разработчика</h1>
-            <h2>Обо мне</h2>
+        <section id="about_us">
+            <img src="food.jpg" alt="Еда в столовой" class="food">
+            <h2>О нас</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga ipsam similique soluta. Ea eum exercitationem illum quia quis soluta tempore.
+                Food Construct - доставка бизнес-ланчей в Москве. Мы привезём вам горячую вкусную еду в любую точку города к назначенному времени.
             </p>
+        </section>
 
-            <h2>Навыки</h2>
+        <section id="why_better">
+            <h2>Преимущества Food Construct</h2>
+            <ul>
+                <li>Привозим обед к назначенному времени без опозданий</li>
+                <li>Надежно упаковываем блюда в удобные контейнеры бесплатно</li>
+                <li>Доставляем ланчи весь день с 7:00 до 23:00</li>
+            </ul>
+        </section>
 
+        <section id="prices">
+            <h2>Топ-5 популярных блюд</h2>
             <table>
-                <tr>
-                    <td>
-                        Пункт 1
-                    </td>
-                    <td>
-                        Пункт 2
-                    </td>
-                    <td>
-                        Пункт 3
-                    </td>
-                </tr>
+                    <tr>
+                        <th></th>
+                        <th>Название</th>
+                        <th>Кол-во заказов в неделю</th>
+                        <th>Цена</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Лазанья</td>
+                        <td>185</td>
+                        <td>385₽</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Том Ям с креветками</td>
+                        <td>161</td>
+                        <td>365₽</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Норвежский суп</td>
+                        <td>144</td>
+                        <td>270₽</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Жареная картошка с грибами</td>
+                        <td>132</td>
+                        <td>150₽</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Котлеты из курицы с картофельным пюре</td>
+                        <td>128</td>
+                        <td>225₽</td>
+                    </tr>
             </table>
-
         </section>
 
     </main>
 
     <footer>
-
+        <section id="contacts" class="contacts">
+            <p>Позвонить нам <a href="tel:+70000000000">+7-000-000-00-00</a></p>
+        </section>
     </footer>
 </body>
 

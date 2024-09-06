@@ -1,3 +1,48 @@
-table, th, tr{
-    border: 50px solid firebrick;
+* {
+    margin: 5px;
+    padding: 0px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    font-family: Caveat;
+}
+
+p{
+    font-family: Caveat;
+    font-size: 12pt;
+    color: black;
+}
+
+table, th, tr, td{
+    padding: 10px;
+    border: 2px black solid;
+    border-collapse: collapse; /*Добавляет границы (бортики)*/
+    text-align: center;
+    font-family: Caveat;
+}
+
+.fast_travel a{
+    text-decoration: none;
+    font-family: Caveat;
+    font-size: 12pt;
+    color: black;
+    background-color: white;
+}
+
+nav a:hover {
+    color: #ff6348;
+
+}
+
+.food {
+    width: 512px;
+    height: auto;
+}
+
+.contacts p,a{
+    background-color: black;
+    color: white;
+    height: 50px;
+    padding-top: 15px;
+    text-align: center;
+    text-decoration: none;
 }
