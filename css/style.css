@@ -1,13 +1,12 @@
 * {
     margin: 10px;
-    padding: 0px;
-    padding-left: 10px;
+    padding: 1px;
     box-sizing: border-box;
-    font-family: Caveat;
+    font-family: Caveat, Georgia, Times, 'Times New Roman', serif;
 }
 
 p{
-    font-family: Caveat;
+    font-family: Caveat, Georgia, Times, 'Times New Roman', serif;
     font-size: 12pt;
     color: black;
 }
@@ -17,17 +16,17 @@ table, th, tr, td{
     border: 2px black solid;
     border-collapse: collapse; /*Добавляет границы (бортики)*/
     text-align: center;
-    font-family: Caveat;
 }
 
 .fast_travel a{
     text-decoration: none;
-    font-family: Caveat;
     font-size: 12pt;
     color: black;
     background-color: white;
 }
-
+nav a{
+    margin-left: auto;
+}
 nav a:hover {
     color: #ff6348;
 
@@ -42,7 +41,7 @@ nav a:hover {
     background-color: black;
     color: white;
     height: 50px;
-    padding-top: 15px;
+    padding-top: 10px;
     text-align: center;
     text-decoration: none;
 }
