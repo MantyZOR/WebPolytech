@@ -1,8 +1,8 @@
 * {
     margin: 10px;
-    padding-left: 10px;
+    padding: 1px;
     box-sizing: border-box;
-    font-family: Caveat;
+    font-family: Caveat, Georgia, Times, 'Times New Roman', serif;
 }
 
 table, th, tr, td{
@@ -10,18 +10,116 @@ table, th, tr, td{
     border: 2px black solid;
     border-collapse: collapse; /*Добавляет границы (бортики)*/
     text-align: center;
-    font-family: Caveat;
+    font-family: Caveat, Georgia, Times, 'Times New Roman', serif;
 }
 
+/*Настройка навигации*/
 .fast_travel a{
     text-decoration: none;
-    font-family: Caveat;
     font-size: 12pt;
     color: black;
     background-color: white;
 }
 
+/*Для выравнивания nav по h1 заголовку*/
+nav {
+    margin-left: 0%;
+}
+
+/*Для выравнивания текста навигации между словами*/
+nav a{
+    margin-left: auto;
+}
+
 nav a:hover {
     color: #ff6348;
 
+}
+
+/* Стили для активной ссылки */
+#active {
+    color: tomato;
+}
+
+/* Сетка для блоков блюд */
+.dishes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+/* Блок каждого блюда */
+.dish {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 40px;
+    background-color: white;
+    border-radius: 35px;
+    cursor: pointer;
+    filter: drop-shadow(17px 19px 24px rgba(0, 0, 0, 0.13));
+}
+
+.dish img {
+    width: 100%;
+    border-radius: 35px;
+}
+/* Название блюда */
+.dish p:nth-child(2){
+
+}
+
+/* Цена */
+.dish p:nth-child(3) {
+    font-size: 1.2em;
+}
+
+/* Вес */
+.dish p:nth-child(4) {
+    color: gray;
+}
+
+/* Кнопка добавления */
+.dish button {
+    margin-top: 10px;
+    padding: 10px 30px;
+    background-color: #f1eee9;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* Hover-эффекты */
+.dish:hover {
+    border: 2px solid tomato;
+}
+
+.dish:hover button {
+    background-color: tomato;
+}
+
+/* Адаптивность для <=800px */
+@media (max-width: 800px) {
+    .dishes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Адаптивность для <=600px */
+@media (max-width: 600px) {
+    .dishes {
+        grid-template-columns: 1fr;
+    }
+
+    h2 {
+        text-align: center;
+    }
+}
+
+/*Настройка для footer*/
+.contacts p,a{
+    background-color: black;
+    color: white;
+    height: 50px;
+    padding-top: 10px;
+    text-align: center;
+    text-decoration: none;
 }

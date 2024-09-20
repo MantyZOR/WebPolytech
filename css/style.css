@@ -25,6 +25,11 @@ table, th, tr, td{
     color: black;
     background-color: white;
 }
+
+nav {
+    margin-left: 0%;
+}
+
 nav a{
     margin-left: auto;
 }
