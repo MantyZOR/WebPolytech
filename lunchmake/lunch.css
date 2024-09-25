@@ -21,19 +21,24 @@ table, th, tr, td{
     background-color: white;
 }
 
-/*Для выравнивания nav по h1 заголовку*/
-nav {
-    margin-left: 0%;
+nav h3 {
+    display: flex;
+    flex-wrap: wrap; /* Разрешаем перенос элементов */
+    gap: 15px; /* Отступы между элементами */
+    justify-content: center; /* Выравнивание элементов по центру */
+}
+
+nav a {
+    margin-left: 0; /* Убираем смещение, если было */
+}
+
+nav a:hover {
+    color: #ff6348;
 }
 
 /*Для выравнивания текста навигации между словами*/
 nav a{
     margin-left: auto;
-}
-
-nav a:hover {
-    color: #ff6348;
-
 }
 
 /* Стили для активной ссылки */
@@ -62,15 +67,17 @@ nav a:hover {
 .dish img {
     width: 100%;
     border-radius: 35px;
-}
-/* Название блюда */
-.dish p:nth-child(2){
-
+    margin-left: 0;
 }
 
 /* Цена */
+.dish p:nth-child(2){
+    font-size: 25pt;
+}
+
+/* Блюдо */
 .dish p:nth-child(3) {
-    font-size: 1.2em;
+    font-size: 20pt;
 }
 
 /* Вес */
@@ -113,6 +120,7 @@ nav a:hover {
         text-align: center;
     }
 }
+
 
 /*Настройка для footer*/
 .contacts p,a{

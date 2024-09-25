@@ -26,16 +26,29 @@ table, th, tr, td{
     background-color: white;
 }
 
-nav {
-    margin-left: 0%;
+nav h3 {
+    display: flex;
+    flex-wrap: wrap; /* Разрешаем перенос элементов */
+    gap: 15px; /* Отступы между элементами */
+    justify-content: center; /* Выравнивание элементов по центру */
 }
 
+nav a {
+    margin-left: 0; /* Убираем смещение, если было */
+}
+
+nav a:hover {
+    color: #ff6348;
+}
+
+/*Для выравнивания текста навигации между словами*/
 nav a{
     margin-left: auto;
 }
-nav a:hover {
-    color: #ff6348;
 
+/* Стили для активной ссылки */
+#active {
+    color: tomato;
 }
 
 .food {
@@ -50,4 +63,44 @@ nav a:hover {
     padding-top: 10px;
     text-align: center;
     text-decoration: none;
+}
+
+/* Медиазапросы */
+
+/* Для ширины экрана ≤800px */
+@media (max-width: 800px) {
+    .food {
+        width: 500px; /* Изменяем ширину изображения в блоке "О нас" */
+    }
+}
+
+/* Для ширины экрана ≤600px */
+@media (max-width: 600px) {
+    h1 {
+        text-align: center; /* Выравниваем заголовок по центру */
+    }
+
+    nav h3 {
+        flex-direction: column; /* Меню становится вертикальным */
+        align-items: center; /* Центрируем элементы по дополнительной оси */
+    }
+
+    nav a {
+        font-size: 16pt; /* Увеличиваем шрифт ссылок на 4px */
+    }
+
+    .food {
+        width: 100%; /* Изображение в блоке "О нас" растягивается на 100% */
+    }
+
+    table {
+        font-size: calc(100% - 2px); /* Уменьшаем шрифт таблицы на 2px */
+    }
+}
+
+/* Для ширины экрана ≤400px */
+@media (max-width: 400px) {
+    table {
+        font-size: calc(100% - 4px); /* Ещё раз уменьшаем шрифт таблицы на 2px */
+    }
 }

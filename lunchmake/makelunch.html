@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="lunch.css">
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=SUSE:wght@100..800&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Сайт</title>
 </head>
 
@@ -16,7 +17,7 @@
     <nav>
       <h3>
         <a href='../index.html'>О нас</a>
-        <a href='#'>Собрать ланч</a>
+        <a href='#' id="active">Собрать ланч</a>
         <a href='#'>Заказы</a>
         <a href='#contacts'>Контакты</a>
       </h3>
@@ -25,64 +26,87 @@
 </header>
 
 <main>
+
+  <!--Блок "супы"-->
   <section id="soups">
     <h2>Супы</h2>
     <div class="dishes">
+
       <div class="dish">
         <img src="/images/soups/soup1.jpg" alt="Суп 1">
-        <p>Название блюда</p>
-        <p>Цена: 250₽</p>
+        <p>Цена: 249₽</p>
+        <p>Суп</p>
         <p>Вес: 300г</p>
         <button>Добавить</button>
       </div>
-      <!-- Добавим аналогичные блоки для других блюд -->
+
     </div>
   </section>
 
+  <!--Блок "главные блюда"-->
   <section id="main_dishes">
     <h2>Основные блюда</h2>
     <div class="dishes">
 
       <div class="dish">
         <img src="/images/main_dishes/main_dish1.jpg" alt="Основное блюдо 1">
-        <p>Название блюда</p>
-        <p>Цена: 450₽</p>
+        <p>Цена: 449₽</p>
+        <p>Картофель</p>
         <p>Вес: 500г</p>
         <button>Добавить</button>
       </div>
 
       <div class="dish">
-        <img src="/images/main_dishes/main_dish2.jpg" alt="Основное блюдо 1">
-        <p>Название блюда</p>
-        <p>Цена: 1000₽</p>
+        <img src="/images/main_dishes/main_dish2.jpg" alt="Основное блюдо 2">
+        <p>Цена: 999₽</p>
+        <p>Лимонад в стеклянной бочке</p>
         <p>Вес: 350г</p>
         <button>Добавить</button>
       </div>
-      <!-- Блоки для других основных блюд -->
+
+      <div class="dish">
+        <img src="/images/main_dishes/main_dish3.png" alt="Основное блюдо 3">
+        <p>Цена: 149₽</p>
+        <p>Пончик</p>
+        <p>Вес: 200г</p>
+        <button>Добавить</button>
+      </div>
+
+      <div class="dish">
+        <img src="/images/main_dishes/main_dish4.png" alt="Основное блюдо 4">
+        <p>Цена: 500₽</p>
+        <p>Лимонад в стеклянной бочке</p>
+        <p>Вес: 750г</p>
+        <button>Добавить</button>
+      </div>
+
     </div>
   </section>
 
+  <!--Блок "напитки"-->
   <section id="drinks">
     <h2>Напитки</h2>
     <div class="dishes">
 
       <div class="dish">
         <img src="/images/drinks/drink1.jpg" alt="Напиток 1">
-        <p>Название напитка</p>
-        <p>Цена: 100₽</p>
+        <p>Цена: 749₽</p>
+        <p>Апельсиновый коктейль с вином</p>
         <p>Объем: 250мл</p>
         <button>Добавить</button>
       </div>
-      <!-- Блоки для других напитков -->
+
     </div>
   </section>
 </main>
 
-<footer>
-  <section id="contacts" class="contacts">
-    <p>Позвонить нам <a href="tel:+70000000000">+7-000-000-00-00</a></p>
-  </section>
-</footer>
+  <footer>
+    <div>
+      <section id="contacts" class="contacts">
+        <p>Позвонить нам <a href="tel:+70000000000">+7-000-000-00-00</a></p>
+      </section>
+    </div>
+  </footer>
 </body>
 
 </html>
