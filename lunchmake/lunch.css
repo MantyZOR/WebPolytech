@@ -60,7 +60,10 @@ nav a:hover {
 /*Для выравнивания текста навигации между словами*/
 nav a{
     margin-left: auto;
+<<<<<<< HEAD
     margin-right: auto;
+=======
+>>>>>>> origin/main
 }
 
 /* Стили для активной ссылки */

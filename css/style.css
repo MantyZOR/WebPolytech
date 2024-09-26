@@ -55,6 +55,7 @@ nav h3 {
 
 nav a {
     margin-left: 0; /* Убираем смещение, если было */
+<<<<<<< HEAD
 }
 
 nav a:hover {
@@ -67,6 +68,19 @@ nav a{
     margin-right: auto;
 }
 
+=======
+}
+
+nav a:hover {
+    color: #ff6348;
+}
+
+/*Для выравнивания текста навигации между словами*/
+nav a{
+    margin-left: auto;
+}
+
+>>>>>>> origin/main
 /* Стили для активной ссылки */
 #active {
     color: tomato;
