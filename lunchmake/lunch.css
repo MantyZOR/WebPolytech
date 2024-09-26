@@ -1,9 +1,30 @@
+/* Универсальный селектор */
 * {
-    margin: 10px;
-    padding: 1px;
+    margin: 0; /* Убираем все отступы */
+    padding: 0; /* Убираем все внутренние отступы */
     box-sizing: border-box;
     font-family: Caveat, Georgia, Times, 'Times New Roman', serif;
 }
+
+/* Сброс отступов и высоты для html и body */
+header, main {
+    margin: 0;
+    padding: 30px;
+    width: 100%; /* Ширина на всю страницу */
+    height: 100%; /* Высота на всю страницу */
+}
+
+/* Настройка футера */
+footer {
+    margin: 0; /* Убираем внешние отступы */
+    padding: 20px 0; /* Добавляем отступы сверху и снизу */
+    width: 100%; /* Занимаем всю ширину экрана */
+    background-color: black; /* Цвет фона */
+    color: white; /* Цвет текста */
+    text-align: center; /* Центрирование текста */
+    box-sizing: border-box;
+}
+
 
 table, th, tr, td{
     padding: 10px;
@@ -39,6 +60,7 @@ nav a:hover {
 /*Для выравнивания текста навигации между словами*/
 nav a{
     margin-left: auto;
+    margin-right: auto;
 }
 
 /* Стили для активной ссылки */
@@ -106,14 +128,14 @@ nav a{
 /* Адаптивность для <=800px */
 @media (max-width: 800px) {
     .dishes {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
 /* Адаптивность для <=600px */
 @media (max-width: 600px) {
     .dishes {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(3, 1fr);
     }
 
     h2 {
@@ -131,3 +153,4 @@ nav a{
     text-align: center;
     text-decoration: none;
 }
+
