@@ -154,3 +154,93 @@ nav a{
     text-decoration: none;
 }
 
+/*Оформление формы*/
+
+.order-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+    max-width: 800px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.order-form h2 {
+    grid-column: span 2;
+    text-align: center;
+}
+
+.order-form h3 {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff6348;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e5533b;
+}
+
+button[type="reset"] {
+    background-color: #ccc;
+}
+
+button[type="reset"]:hover {
+    background-color: #b3b3b3;
+}
+
+.client-section input[type="checkbox"],
+.client-section input[type="radio"] {
+    margin-right: 5px; /* Отступ справа для кнопок */
+    margin-top: 25px; /* Убираем отступы сверху */
+    width: 20px;
+}
+
+
+@media (max-width: 600px) {
+    form {
+        grid-template-columns: 1fr;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+}
