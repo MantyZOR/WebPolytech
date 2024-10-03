@@ -176,7 +176,6 @@ form {
 }
 
 .order-form h2 {
-    grid-column: span 2;
     text-align: center;
 }
 
@@ -243,4 +242,13 @@ button[type="reset"]:hover {
     h2 {
         font-size: 18px;
     }
+}
+
+.delivery-note {
+    font-size: 14px;
+    margin-top: -10px;
+    color: #a19898;
+}
+.time_delivery{
+    margin-top: 10px;
 }
