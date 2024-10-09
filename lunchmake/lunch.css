@@ -252,3 +252,12 @@ button[type="reset"]:hover {
 .time_delivery{
     margin-top: 10px;
 }
+
+.bold-text {
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.comment_from_java{
+    margin-top: 10px;
+}
