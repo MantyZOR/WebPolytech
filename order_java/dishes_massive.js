@@ -1,4 +1,4 @@
-const dishes = [
+const dishes_massive = [
     // Супы
     {
         keyword: 'soup1',
