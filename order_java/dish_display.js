@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const soupSection = document.querySelector('#soups .dishes_massive');
-    const mainDishSection = document.querySelector('#main_dishes .dishes_massive');
-    const drinkSection = document.querySelector('#drinks .dishes_massive');
+    const soupSection = document.querySelector('#soups .dishes');
+    const mainDishSection = document.querySelector('#main_dishes .dishes');
+    const drinkSection = document.querySelector('#drinks .dishes');
 
     const sortedDishes = dishes_massive.sort((a, b) => a.name.localeCompare(b.name));
 
