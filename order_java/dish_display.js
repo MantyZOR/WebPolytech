@@ -53,17 +53,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const isActive = button.classList.contains('active');  // Проверяем, активна ли кнопка
             const kind = button.getAttribute('data-kind');
             const section = button.closest('section');
             const dishes = section.querySelectorAll('.dish');
 
-            // Переключаем активный класс на кнопке
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.toggle('active');
-
-            // Показать/скрыть блюда в зависимости от фильтра
+            // Если кнопка уже активна, снимаем класс active и показываем все блюда
             if (button.classList.contains('active')) {
+                button.classList.remove('active');
+                dishes.forEach(dish => dish.style.display = 'block'); // Показываем все блюда
+            } else {
+                // Убираем класс active у всех кнопок
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+
+                // Добавляем класс active к текущей кнопке
+                button.classList.add('active');
+
+                // Показать/скрыть блюда в зависимости от фильтра
                 dishes.forEach(dish => {
                     if (dish.getAttribute('data-kind') === kind) {
                         dish.style.display = 'block';
@@ -71,9 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         dish.style.display = 'none';
                     }
                 });
-            } else {
-                // Если фильтр снят, показываем все блюда
-                dishes.forEach(dish => dish.style.display = 'block');
             }
         });
     });

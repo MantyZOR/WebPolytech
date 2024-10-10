@@ -258,6 +258,32 @@ button[type="reset"]:hover {
     margin-bottom: 25px;
 }
 
+/*Java textarea в order.js*/
 .comment_from_java{
     margin-top: 10px;
+}
+
+/*Настройка кнопок-фильтров для категории блюд*/
+
+/* Стили для неактивных кнопок */
+.filter-btn {
+    background-color: transparent; /* Убираем фон */
+    color: #ff6348; /* Тёмно-оранжевый текст */
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Плавный переход для изменения цвета */
+}
+
+/* Стили для кнопок при наведении */
+.filter-btn:hover {
+    background-color: rgba(255, 99, 72, 0.2); /* Полупрозрачный фон при наведении */
+    color: #fff; /* Белый текст при наведении */
+}
+
+/* Стили для активной кнопки */
+.filter-btn.active {
+    background-color: rgba(255, 99, 72, 0.6); /* Полупрозрачный оранжевый фон */
+    color: #fff; /* Белый текст */
+    border-color: rgba(255, 99, 72, 0.6); /* Устанавливаем цвет границы как у фона */
 }
