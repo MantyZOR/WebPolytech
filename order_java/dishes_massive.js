@@ -2,11 +2,12 @@ const dishes_massive = [
     // Супы
     {
         keyword: 'soup1',
-        name: 'Суп',
+        name: 'Куриный суп',
         price: 249,
         category: 'soup',
         count: '300г',
-        image: '../images/soups/soup1.jpg'
+        image: '../images/soups/soup1.jpg',
+        kind: 'meat'
     },
 
     // Основные блюда
@@ -16,7 +17,8 @@ const dishes_massive = [
         price: 449,
         category: 'main_dish',
         count: '500г',
-        image: '../images/main_dishes/main_dish1.jpg'
+        image: '../images/main_dishes/main_dish1.jpg',
+        kind: 'veg'
     },
     {
         keyword: 'main_dish2',
@@ -24,7 +26,8 @@ const dishes_massive = [
         price: 999,
         category: 'main_dish',
         count: '350г',
-        image: '../images/main_dishes/main_dish2.jpg'
+        image: '../images/main_dishes/main_dish2.jpg',
+        kind: 'veg'
     },
     {
         keyword: 'main_dish3',
@@ -32,7 +35,8 @@ const dishes_massive = [
         price: 149,
         category: 'main_dish',
         count: '200г',
-        image: '../images/main_dishes/main_dish3.png'
+        image: '../images/main_dishes/main_dish3.png',
+        kind: 'meat'
     },
     {
         keyword: 'main_dish4',
@@ -40,7 +44,8 @@ const dishes_massive = [
         price: 500,
         category: 'main_dish',
         count: '750г',
-        image: '../images/main_dishes/main_dish4.png'
+        image: '../images/main_dishes/main_dish4.png',
+        kind: 'fish'
     },
 
     // Напитки
@@ -50,6 +55,7 @@ const dishes_massive = [
         price: 749,
         category: 'drink',
         count: '250мл',
-        image: '../images/drinks/drink1.jpg'
+        image: '../images/drinks/drink1.jpg',
+        kind: 'cold',
     }
 ];

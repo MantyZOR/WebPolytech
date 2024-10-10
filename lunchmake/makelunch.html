@@ -33,7 +33,13 @@
   <!--Блок "супы"-->
   <section id="soups">
     <h2>Супы</h2>
+    <div class="filters">
+      <button class="filter-btn" data-kind="fish">Рыбные</button>
+      <button class="filter-btn" data-kind="meat">Мясные</button>
+      <button class="filter-btn" data-kind="veg">Вегетарианские</button>
+    </div>
     <div class="dishes">
+
 
       <!--<div class="dish">
         <img src="/images/soups/soup1.jpg" alt="Суп 1">
@@ -49,7 +55,14 @@
   <!--Блок "главные блюда"-->
   <section id="main_dishes">
     <h2>Основные блюда</h2>
+    <div class="filters">
+      <button class="filter-btn" data-kind="fish">Рыбные</button>
+      <button class="filter-btn" data-kind="meat">Мясные</button>
+      <button class="filter-btn" data-kind="veg">Вегетарианские</button>
+    </div>
     <div class="dishes">
+
+
 
       <!--<div class="dish">
         <img src="/images/main_dishes/main_dish1.jpg" alt="Основное блюдо 1">
@@ -85,12 +98,28 @@
 
     </div>
   </section>
+  <section id="salad_starter">
+    <h2>Салат или стартер</h2>
+    <div class="filters">
+      <button class="filter-btn" data-kind="fish">Рыбные</button>
+      <button class="filter-btn" data-kind="meat">Мясные</button>
+      <button class="filter-btn" data-kind="veg">Вегетарианские</button>
+    </div>
+    <div class="dishes">
 
+    </div>
+  </section>
   <!--Блок "напитки"-->
   <section id="drinks">
     <h2>Напитки</h2>
+    <div class="filters">
+      <button class="filter-btn" data-kind="heat">Холодный</button>
+      <button class="filter-btn" data-kind="cold">Горячий</button>
+    </div>
     <div class="dishes">
 
+    </div>
+  </section>
       <!--<div class="dish">
         <img src="/images/drinks/drink1.jpg" alt="Напиток 1">
         <p>Цена: 749₽</p>
@@ -99,8 +128,17 @@
         <button>Добавить</button>
       </div>-->
 
-    </div>
-  </section>
+    <section id="desert">
+      <h2>Десерт</h2>
+      <div class="filters">
+        <button class="filter-btn" data-kind="small">Маленькая порция</button>
+        <button class="filter-btn" data-kind="medium">Средняя порция</button>
+        <button class="filter-btn" data-kind="large">Большая порция</button>
+      </div>
+      <div class="dishes">
+
+      </div>
+    </section>
 
 
   <div class="order-form">
@@ -179,7 +217,7 @@
       </div>
 
       <!-- Кнопки -->
-      <button type="reset">Сбросить</button>
+      <button type="reset" id="resetButton">Сбросить</button>
       <button type="submit">Отправить</button>
     </form>
   </div>

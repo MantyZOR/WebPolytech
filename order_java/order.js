@@ -20,14 +20,26 @@ function updateOrderDisplay() {
         (order.main_dish ? order.main_dish.price : 0) +
         (order.drink ? order.drink.price : 0);
 
-    orderSection.innerHTML = `
-    <h3>Ваш заказ</h3>
-    <label>Суп: ${soupText}</label><br>
-    <label>Главное блюдо: ${mainDishText}</label><br>
-    <label>Напиток: ${drinkText}</label><br>
-    ${total > 0 ? `<h4>Стоимость заказа: ${total}₽</h4>` : ''}
-    <label for="comment" class="comment_from_java">Комментарий к заказу</label>
-    <textarea id="comment" name="comment" rows="4"></textarea>
-  `;
+    if (!order.soup && !order.main_dish && !order.drink) {
+        orderSection.innerHTML = `
+            <h3>Ваш заказ</h3>
+            <p class="bold-text">Ничего не выбрано</p>
+            <label for="comment" class="comment_from_java">Комментарий к заказу</label>
+            <textarea id="comment" name="comment" rows="4"></textarea>
+        `;
+    } else {
+        orderSection.innerHTML = `
+        <h3>Ваш заказ</h3>
+        <h4>Суп:</h4>
+        ${soupText}<br><br>
+        <h4>Главное блюдо:</h4>
+        ${mainDishText}<br><br>
+        <h4>Напиток:</h4>
+        ${drinkText}<br><br>
+        ${total > 0 ? `<h4>Стоимость заказа: ${total}₽</h4>` : ''}
+        <label for="comment" class="comment_from_java">Комментарий к заказу</label>
+        <textarea id="comment" name="comment" rows="4"></textarea>
+      `;
+    }
 }
 
