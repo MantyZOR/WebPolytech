@@ -287,3 +287,8 @@ button[type="reset"]:hover {
     color: #fff; /* Белый текст */
     border-color: rgba(255, 99, 72, 0.6); /* Устанавливаем цвет границы как у фона */
 }
+
+.filters{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}

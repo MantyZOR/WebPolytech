@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const soupSection = document.querySelector('#soups .dishes');
     const mainDishSection = document.querySelector('#main_dishes .dishes');
     const drinkSection = document.querySelector('#drinks .dishes');
+    const saladSection = document.querySelector('#salad_starter .dishes');
+    const desertSection = document.querySelector('#desert .dishes');
     const resetButton = document.getElementById('resetButton');  // Находим кнопку "Сброс"
 
     const sortedDishes = dishes_massive.sort((a, b) => a.name.localeCompare(b.name));
@@ -26,6 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
             mainDishSection.appendChild(dishElement);
         } else if (dish.category === 'drink') {
             drinkSection.appendChild(dishElement);
+        } else if (dish.category === 'salad_starter') {
+            saladSection.appendChild(dishElement);
+        } else if (dish.category === 'desert') {
+            desertSection.appendChild(dishElement);
         }
 
         // Добавление блюда в заказ по клику
