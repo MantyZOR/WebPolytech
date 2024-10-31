@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
         button.addEventListener('click', () => {
             const kind = button.getAttribute('data-kind');
             const section = button.closest('section');
-            const dishes = section.querySelectorAll('.dish');
+            const dishes  = section.querySelectorAll('.dish');
 
             // Если кнопка уже активна, снимаем класс active и показываем все блюда
             if (button.classList.contains('active')) {
