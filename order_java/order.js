@@ -52,3 +52,63 @@ function updateOrderDisplay() {
       `;
     }
 }
+
+function checkOrder() {
+    const hasSoup = order.soup !== null;
+    const hasMainDish = order.main_dish !== null;
+    const hasSaladStarter = order.salad_starter !== null;
+    const hasDrink = order.drink !== null;
+    const hasDesert = order.desert !== null;
+
+
+    if (!hasSoup && !hasMainDish && !hasSaladStarter && !hasDrink && !hasDesert) {
+        showNotification("Ничего не выбрано. Выберите блюда для заказа");
+        return false;
+    } else if (hasSoup && !hasMainDish && !hasSaladStarter) {
+        showNotification("Выберите главное блюдо/салат/стартер");
+        return false;
+    } else if ((hasSaladStarter && !hasSoup && !hasMainDish)|| (hasMainDish && !hasSoup) ) {
+        showNotification("Выберите суп или главное блюдо");
+        return false;
+    } else if (!hasDrink && (hasSoup || hasMainDish || hasSaladStarter)) {
+        showNotification("Выберите напиток");
+        return false;
+    } else if (!hasSoup && !hasMainDish && !hasSaladStarter && (hasDrink || hasDesert)) {
+        showNotification("Выберите главное блюдо");
+        return false;
+    }
+
+    return true;
+}
+
+function showNotification(message) {
+
+    const notification = document.getElementById('notification');
+    const notificationText = document.getElementById('notification-text');
+    const notificationButton = document.getElementById('notification-button');
+
+    document.body.classList.add('noscroll'); // Отключаем прокрутку
+
+    notificationButton.addEventListener('click', () => {
+        notification.classList.add('hidden');
+        document.body.classList.remove('noscroll'); // Включаем прокрутку обратно
+    });
+
+    notificationText.textContent = message;
+    notification.classList.remove('hidden');
+
+
+    notificationButton.addEventListener('click', () => {
+        notification.classList.add('hidden');
+    });
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    document.querySelector('form').addEventListener('submit', (event) => {
+        if (!checkOrder()) {
+            event.preventDefault();
+        }
+    });
+});

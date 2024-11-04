@@ -4,6 +4,7 @@
 
 <head>
   <link rel="stylesheet" href="lunch.css">
+  <link rel="stylesheet" href="lunch_choose.css">
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=SUSE:wght@100..800&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,6 +30,104 @@
 </header>
 
 <main>
+    <!-- Блок с вариантами ланчей -->
+    <section id="lunch-options">
+      <h2 class="lunch-text">Выберите вариант ланча</h2>
+
+      <!-- Grid-контейнер с вариантами ланчей -->
+      <div class="lunch-options-grid">
+
+        <!-- Вариант ланча 1 -->
+        <div class="lunch-option">
+          <div class="dish-option">
+            <img src="../images/lunch_choose/hot_dish.png" alt="Суп">
+            <p>Суп</p>
+          </div>
+          <div class="dish-option">
+            <img src="../images/lunch_choose/main_dish.png" alt="Главное блюдо">
+            <p>Главное блюдо</p>
+          </div>
+          <div class="dish-option">
+            <img src="../images/lunch_choose/veg_dish.png" alt="Салат">
+            <p>Салат</p>
+          </div>
+          <div class="dish-option">
+            <img src="../images/lunch_choose/drink_dish.png" alt="Напиток">
+            <p>Напиток</p>
+          </div>
+        </div>
+
+        <!-- Вариант ланча 2 -->
+        <div class="lunch-option">
+          <div class="dish-option">
+            <img src="../images/lunch_choose/hot_dish.png" alt="Суп">
+            <p>Суп</p>
+          </div>
+          <div class="dish-option">
+            <img src="../images/lunch_choose/main_dish.png" alt="Главное блюдо">
+            <p>Главное блюдо</p>
+          </div>
+          <div class="dish-option">
+            <img src="../images/lunch_choose/drink_dish.png" alt="Напиток">
+            <p>Напиток</p>
+          </div>
+        </div>
+        <!-- Вариант ланча 3 -->
+        <div class="lunch-option">
+          <div class="dish-option">
+            <img src="../images/lunch_choose/hot_dish.png" alt="Суп">
+            <p>Суп</p>
+          </div>
+          <div class="dish-option">
+            <img src="../images/lunch_choose/veg_dish.png" alt="Салат">
+            <p>Салат</p>
+          </div>
+          <div class="dish-option">
+            <img src="../images/lunch_choose/drink_dish.png" alt="Напиток">
+            <p>Напиток</p>
+          </div>
+        </div>
+        <!-- Вариант ланча 4 -->
+        <div class="lunch-option">
+          <div class="dish-option">
+            <img src="../images/lunch_choose/main_dish.png" alt="Главное блюдо">
+            <p>Главное блюдо</p>
+          </div>
+          <div class="dish-option">
+            <img src="../images/lunch_choose/veg_dish.png" alt="Салат">
+            <p>Салат</p>
+          </div>
+          <div class="dish-option">
+            <img src="../images/lunch_choose/drink_dish.png" alt="Напиток">
+            <p>Напиток</p>
+          </div>
+        </div>
+        <!-- Вариант ланча 5 -->
+        <div class="lunch-option">
+          <div class="dish-option">
+            <img src="../images/lunch_choose/main_dish.png" alt="Главное блюдо">
+            <p>Главное блюдо</p>
+          </div>
+          <div class="dish-option">
+            <img src="../images/lunch_choose/drink_dish.png" alt="Напиток">
+            <p>Напиток</p>
+          </div>
+        </div>
+        <!-- Вариант ланча 6 -->
+        <div class="lunch-option">
+          <div class="dish-option">
+            <img src="../images/lunch_choose/desert_dish.png" alt="Главное блюдо">
+            <p>Десерт</p>
+            <div class="dessert-info">
+              <p>Десерты можно добавлять к любому виду ланча</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
 
   <!--Блок "супы"-->
   <section id="soups">
@@ -139,7 +238,6 @@
     </div>
   </section>
 
-
   <div class="order-form">
     <h2>Сделать заказ</h2>
     <form action="https://httpbin.org/post" method="POST">
@@ -232,6 +330,11 @@
       </section>
     </div>
   </footer>
+
+  <div id="notification" class="notification hidden">
+    <p id="notification-text"></p>
+    <button id="notification-button">Окей</button>
+  </div>
 </body>
 
 </html>
