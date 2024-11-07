@@ -55,6 +55,7 @@
 #notification-text{
     margin-bottom: 30px;
     margin-top: 20px;
+    white-space: pre-line;
 }
 
 #notification {
@@ -89,9 +90,6 @@
 }
 /* style.css */
 #notification {
-    /* ... (предыдущие стили) */
-    width: 300px; /* Или другая желаемая ширина */
-    height: 200px;
     max-width: 90%; /* Адаптивная ширина */
     box-sizing: border-box;  /* Чтобы padding не увеличивал общую ширину */
 }
