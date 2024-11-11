@@ -1,57 +1,69 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     const soupSection = document.querySelector('#soups .dishes');
     const mainDishSection = document.querySelector('#main_dishes .dishes');
     const drinkSection = document.querySelector('#drinks .dishes');
     const saladSection = document.querySelector('#salad_starter .dishes');
     const desertSection = document.querySelector('#desert .dishes');
-    const resetButton = document.getElementById('resetButton');  // Находим кнопку "Сброс"
+    const resetButton = document.getElementById('resetButton');
+    const apiUrl = 'http://lab7-api.std-900.ist.mospolytech.ru/api/dishes';
 
-    const sortedDishes = dishes_massive.sort((a, b) => a.name.localeCompare(b.name));
 
-    sortedDishes.forEach(dish => {
-        const dishElement = document.createElement('div');
-        dishElement.classList.add('dish');
-        dishElement.setAttribute('data-dish', dish.keyword);
-        dishElement.setAttribute('data-kind', dish.kind);  // Добавляем data-kind для фильтрации
-        dishElement.innerHTML = `
-          <img src="${dish.image}" alt="${dish.name}">
-          <p>Цена: ${dish.price}₽</p>
-          <p>${dish.name}</p>
-          <p>Вес: ${dish.count}</p>
-          <button>Добавить</button>
-        `;
-
-        // Добавляем в соответствующую секцию в зависимости от категории
-        if (dish.category === 'soup') {
-            soupSection.appendChild(dishElement);
-        } else if (dish.category === 'main_dish') {
-            mainDishSection.appendChild(dishElement);
-        } else if (dish.category === 'drink') {
-            drinkSection.appendChild(dishElement);
-        } else if (dish.category === 'salad_starter') {
-            saladSection.appendChild(dishElement);
-        } else if (dish.category === 'desert') {
-            desertSection.appendChild(dishElement);
+    try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+            throw new Error(`Ошибка HTTP: ${response.status}`);
         }
+        const dishes_massive = await response.json();
 
-        // Добавление блюда в заказ по клику
-        dishElement.querySelector('button').addEventListener('click', () => {
-            addToOrder(dish);
+        const sortedDishes = dishes_massive.sort((a, b) => a.name.localeCompare(b.name));
+
+        sortedDishes.forEach(dish => {
+            //  Корректируем пути к картинкам
+            dish.image = `../images/${dish.image}.png`; // или .png, в зависимости от формата
+
+            const dishElement = document.createElement('div');
+            dishElement.classList.add('dish');
+            dishElement.setAttribute('data-dish', dish.keyword);
+            dishElement.setAttribute('data-kind', dish.kind);
+            dishElement.innerHTML = `
+              <img src="${dish.image}" alt="${dish.name}" onerror="this.src='../images/no_image.jpg'">
+              <p>Цена: ${dish.price}₽</p>
+              <p>${dish.name}</p>
+              <p>Вес: ${dish.count}</p>
+              <button>Добавить</button>
+            `;
+
+            if (dish.category === 'soup') {
+                soupSection.appendChild(dishElement);
+            } else if (dish.category === 'main-course') { // Изменено с 'main_dish' на 'main-course'
+                mainDishSection.appendChild(dishElement);
+            } else if (dish.category === 'drink') {
+                drinkSection.appendChild(dishElement);
+            } else if (dish.category === 'salad') { // Изменено с 'salad_starter' на 'salad'
+                saladSection.appendChild(dishElement);
+            } else if (dish.category === 'dessert') { // Изменено с 'desert' на 'dessert'
+                desertSection.appendChild(dishElement);
+            }
+
+            dishElement.querySelector('button').addEventListener('click', () => {
+                addToOrder(dish);
+            });
         });
-    });
 
-    // Добавляем обработчик на кнопку сброса
-    resetButton.addEventListener('click', () => {
-        // Сбрасываем объект order
-        order = {
-            soup: null,
-            main_dish: null,
-            drink: null
-        };
+        resetButton.addEventListener('click', () => {
+            order = {
+                soup: null,
+                "main-course": null, //здесь main_dish
+                salad: null, //здесь salad_starter
+                drink: null,
+                dessert: null //здесь desert
+            };
+            updateOrderDisplay();
+        });
 
-        // Обновляем отображение заказа после сброса
-        updateOrderDisplay();
-    });
+    } catch (error) {
+        console.error("Ошибка при загрузке данных:", error);
+    }
 });
 
 document.addEventListener("DOMContentLoaded", () => {

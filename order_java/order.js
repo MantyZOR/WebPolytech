@@ -1,9 +1,9 @@
 let order = {
     soup: null,
-    main_dish: null,
-    salad_starter: null,
+    "main-course": null,
+    salad: null,
     drink: null,
-    desert: null
+    dessert: null
 };
 
 function addToOrder(dish) {
@@ -15,18 +15,18 @@ function updateOrderDisplay() {
     const orderSection = document.querySelector('.order-section');
 
     const soupText = order.soup ? `${order.soup.name} ${order.soup.price}₽` : 'Блюдо не выбрано';
-    const mainDishText = order.main_dish ? `${order.main_dish.name} ${order.main_dish.price}₽` : 'Блюдо не выбрано';
-    const saladStarterText = order.salad_starter ? `${order.salad_starter.name} ${order.salad_starter.price}₽` : 'Салат или стартер не выбран';
+    const mainDishText = order["main-course"] ? `${order["main-course"].name} ${order["main-course"].price}₽` : 'Блюдо не выбрано';
+    const saladStarterText = order.salad ? `${order.salad.name} ${order.salad.price}₽` : 'Салат или стартер не выбран';
     const drinkText = order.drink ? `${order.drink.name} ${order.drink.price}₽` : 'Напиток не выбран';
-    const desertText = order.desert ? `${order.desert.name} ${order.desert.price}₽` : 'Десерт не выбран';
+    const desertText = order.dessert ? `${order.dessert.name} ${order.dessert.price}₽` : 'Десерт не выбран';
 
     const total = (order.soup ? order.soup.price : 0) +
         (order.main_dish ? order.main_dish.price : 0) +
-        (order.salad_starter ? order.salad_starter.price : 0) +
+        (order.salad ? order.salad.price : 0) +
         (order.drink ? order.drink.price : 0) +
-        (order.desert ? order.desert.price : 0);
+        (order.dessert ? order.dessert.price : 0);
 
-    if (!order.soup && !order.main_dish && !order.salad_starter && !order.drink && !order.desert) {
+    if (!order.soup && !order.main_dish && !order.salad && !order.drink && !order.dessert) {
         orderSection.innerHTML = `
             <h3>Ваш заказ</h3>
             <p class="bold-text">Ничего не выбрано</p>
@@ -55,10 +55,10 @@ function updateOrderDisplay() {
 
 function checkOrder() {
     const hasSoup = order.soup !== null;
-    const hasMainDish = order.main_dish !== null;
-    const hasSaladStarter = order.salad_starter !== null;
+    const hasMainDish = order["main-course"] !== null;
+    const hasSaladStarter = order.salad !== null;
     const hasDrink = order.drink !== null;
-    const hasDesert = order.desert !== null;
+    const hasDesert = order.dessert !== null;
 
     // Проверка полностью собранных комбинаций (без изменений)
     if (hasSoup && hasMainDish && hasSaladStarter && hasDrink) return true;
