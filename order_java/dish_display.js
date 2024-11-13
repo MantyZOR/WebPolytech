@@ -18,15 +18,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         const sortedDishes = dishes_massive.sort((a, b) => a.name.localeCompare(b.name));
 
         sortedDishes.forEach(dish => {
-            //  Корректируем пути к картинкам
-            dish.image = `../images/${dish.image}.png`; // или .png, в зависимости от формата
 
             const dishElement = document.createElement('div');
             dishElement.classList.add('dish');
             dishElement.setAttribute('data-dish', dish.keyword);
             dishElement.setAttribute('data-kind', dish.kind);
             dishElement.innerHTML = `
-              <img src="${dish.image}" alt="${dish.name}" onerror="this.src='../images/no_image.jpg'">
+              <img src="${dish.image}" alt="${dish.name}">
               <p>Цена: ${dish.price}₽</p>
               <p>${dish.name}</p>
               <p>Вес: ${dish.count}</p>
