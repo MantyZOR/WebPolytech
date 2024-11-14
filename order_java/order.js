@@ -26,7 +26,7 @@ function updateOrderDisplay() {
         (order.drink ? order.drink.price : 0) +
         (order.dessert ? order.dessert.price : 0);
 
-    if (!order.soup && !order.main_dish && !order.salad && !order.drink && !order.dessert) {
+    if (!order.soup && !order["main-course"] && !order.salad && !order.drink && !order.dessert) {
         orderSection.innerHTML = `
             <h3>Ваш заказ</h3>
             <p class="bold-text">Ничего не выбрано</p>
