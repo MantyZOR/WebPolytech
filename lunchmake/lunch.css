@@ -293,3 +293,62 @@ button[type="reset"]:hover {
     margin-top: 15px;
     margin-bottom: 15px;
 }
+
+
+#orderLink.disabled {
+    pointer-events: none; /* Блокируем клики */
+    opacity: 0.5; /* Визуально показываем, что ссылка неактивна */
+}
+
+.dish.selected button{ /* Кнопка "Добавить" для выбранного блюда */
+    background-color: tomato;
+}
+
+.dish.selected{ /* Фон для выбранного блюда */
+    border: 2px solid tomato;
+}
+/* Стили для панели с общей стоимостью и кнопкой */
+/* Стили для панели с общей стоимостью и кнопкой */
+#orderSummary {
+    display: flex !important;
+    justify-content: space-between !important; /* Размещение элементов по краям */
+    align-items: center !important; /* Вертикальное выравнивание */
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f0f0f0;
+    padding: 20px;
+    z-index: 2; /* Обеспечивает отображение поверх других элементов */
+}
+
+#orderSummary p, #orderSummary a { /* Стили для текста и ссылки */
+    margin: 0; /* Убираем внешние отступы */
+    font-size: 30px;
+}
+
+#orderLink.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+#orderSummary a {
+    background-color: transparent; /* Убираем фон */
+    color: #ff6348; /* Цвет ссылки - можно изменить */
+    text-decoration: none; /* Убираем подчеркивание */
+    padding: 5px 16px; /* Добавляем отступы */
+    border-radius: 4px; /* Скругление углов */
+    transition: background-color 0.3s, color 0.3s; /* Плавный переход */
+}
+
+#orderSummary a:hover {
+    background-color: rgba(255, 99, 72, 0.2); /* Фон при наведении */
+    color: tomato;
+
+}
+
+#orderLink.disabled{ /* Для неактивной ссылки */
+    background-color: #ccc;
+    color: #666;
+    cursor: default;
+}

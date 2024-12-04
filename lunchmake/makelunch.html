@@ -8,8 +8,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=SUSE:wght@100..800&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../order_java/makelunch.js"></script>
   <script src="../order_java/order.js"></script>
-  <script src="../order_java/dish_display.js"></script>
   <title>Сайт</title>
 </head>
 
@@ -237,38 +237,11 @@
     </div>
   </section>
 
-  <div class="order-form">
+<!--  <div class="order-form">
     <h2>Сделать заказ</h2>
     <form action="https://httpbin.org/post" method="POST">
-      <!-- Блок с заказом клиента -->
+      &lt;!&ndash; Блок с заказом клиента &ndash;&gt;
       <div class="order-section">
-        <!--<h3>Ваш заказ</h3>
-        <label for="soup">Суп</label>
-        <select id="soup" name="soup" required>
-          <option value="">&#45;&#45;Выберите суп&#45;&#45;</option>
-          <option value="borsch">Борщ</option>
-          <option value="solyanka">Солянка</option>
-          <option value="gaspacho">Гаспачо</option>
-        </select>
-
-        <label for="main-dish">Главное блюдо</label>
-        <select id="main-dish" name="main-dish" required>
-          <option value="">&#45;&#45;Выберите главное блюдо&#45;&#45;</option>
-          <option value="steak">Стейк</option>
-          <option value="pasta">Паста</option>
-          <option value="fish">Рыба</option>
-        </select>
-
-        <label for="drink">Напиток</label>
-        <select id="drink" name="drink" required>
-          <option value="">&#45;&#45;Выберите напиток&#45;&#45;</option>
-          <option value="orange-juice">Апельсиновый сок</option>
-          <option value="apple-juice">Яблочный сок</option>
-          <option value="carrot-juice">Морковный сок</option>
-        </select>
-
-        <label for="comment">Комментарий к заказу</label>
-        <textarea id="comment" name="comment" rows="4"></textarea>-->
 
         <div class="order-section" id="order-section">
           <h3>Ваш заказ</h3>
@@ -280,7 +253,7 @@
 
       </div>
 
-      <!-- Блок с данными клиента -->
+      &lt;!&ndash; Блок с данными клиента &ndash;&gt;
       <div class="client-section">
         <h3>Ваши данные</h3>
         <label for="name">Имя</label>
@@ -312,17 +285,22 @@
 
       </div>
 
-      <!-- Кнопки -->
+      &lt;!&ndash; Кнопки &ndash;&gt;
       <button type="reset" id="resetButton">Сбросить</button>
       <button type="submit">Отправить</button>
     </form>
-  </div>
+  </div>-->
 
 </main>
 
 
+<div id="orderSummary">
+  <!-- Сюда будет добавляться информация о заказе -->
+</div>
 
-  <footer>
+
+
+<footer>
     <div>
       <section id="contacts" class="contacts">
         <p>Позвонить нам <a href="tel:+70000000000">+7-000-000-00-00</a></p>
@@ -335,5 +313,10 @@
     <button id="notification-button">Окей</button>
   </div>
 </body>
+
+<div id="cart-panel" style="display:none; position:sticky; bottom:0; left:0; width:100%; background-color:#f0f0f0; padding:20px;">
+  <p>Общая стоимость: <span id="cart-total">0₽</span></p>
+  <a href="order.html" id="checkout-link">Перейти к оформлению</a>
+</div>
 
 </html>
