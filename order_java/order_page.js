@@ -56,6 +56,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 event.preventDefault();
                 const formData = new FormData(orderForm);
 
+                /*if (!checkOrder()) { // Проверяем заказ
+                    alert("Пожалуйста, соберите один из наборов."); // Выводим сообщение об ошибке, если заказ некорректен
+                    return; // Прерываем выполнение обработчика
+                }*/
                 try { // try для получения блюд
                     const dishesResponse = await fetch(apiUrl);
                     if (!dishesResponse.ok) {
@@ -154,18 +158,26 @@ function createDishElement(dish) {
 
 // Функция для удаления блюда из заказа
 function removeDishFromOrder(dishId, dishElement, orderForm, dishes) {
-    // 1. Удаляем из localStorage
     let selectedDishes = JSON.parse(localStorage.getItem('selectedDishes')) || [];
     selectedDishes = selectedDishes.filter(id => id !== dishId);
     localStorage.setItem('selectedDishes', JSON.stringify(selectedDishes));
-
-    // 2. Удаляем карточку блюда
     dishElement.remove();
-
-    // 3. Удаляем блюдо из формы (реализуйте свою логику)
-
     updateOrderDisplay(dishes);
+    if (selectedDishes.length === 0) {
+        const orderedDishesContainer = document.getElementById('orderedDishes');
+        orderedDishesContainer.innerHTML = ''; // Очищаем контейнер
 
+        const emptyOrderMessage = document.createElement('div'); // Создаем div для сообщения
+        emptyOrderMessage.className = 'empty-order-message'; // Добавляем класс для стилей
+        emptyOrderMessage.innerHTML = '<p>Ничего не выбрано. Чтобы добавить блюда в заказ, перейдите на <a href ="../lunchmake/makelunch.html" class="empty-order-message-href">страницу "Собрать ланч"</a>.</p>'; // Добавляем текст с ссылкой
+
+        orderedDishesContainer.appendChild(emptyOrderMessage);
+    }
+    // Обновляем объект order
+    const category = Object.keys(order).find(key => order[key]?.id === dishId);
+    if(category) {
+        order[category] = null;
+    }
 }
 
 
@@ -248,10 +260,5 @@ function updateOrderDisplay(dishes) {
     commentArea.name = 'comment';
     commentArea.rows = 4;
     orderSection.appendChild(commentArea);
-
-
-
 }
-
-
 

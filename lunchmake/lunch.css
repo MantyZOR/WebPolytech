@@ -42,13 +42,15 @@ table, th, tr, td{
     background-color: white;
 }
 
-nav h3 {
+.fast_travel_2 {
     display: flex;
     flex-wrap: wrap; /* Разрешаем перенос элементов */
     gap: 15px; /* Отступы между элементами */
-    justify-content: center; /* Выравнивание элементов по центру */
 }
 
+nav h3 a{
+    margin-right: 30px /* Отступы между элементами */
+}
 nav a {
     margin-left: 0; /* Убираем смещение, если было */
 }

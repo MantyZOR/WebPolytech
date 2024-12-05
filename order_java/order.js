@@ -68,26 +68,26 @@ function checkOrder() {
     if (!hasSoup && !hasSaladStarter && hasMainDish && hasDrink) return true;
 
     if (!hasSoup && !hasMainDish && !hasSaladStarter && !hasDrink && !hasDesert) {
-        showNotification("Ничего не выбрано. Выберите блюда для заказа");
+        /*showNotification("Ничего не выбрано. Выберите блюда для заказа");*/
         return false;
     } else if (hasSoup && !hasMainDish && !hasSaladStarter && !hasDrink) { // Только суп - ошибка
-        showNotification("Выберите главное блюдо/салат/стартер и напиток");
+        /*showNotification("Выберите главное блюдо/салат/стартер и напиток");*/
         return false;
     } else if (hasSaladStarter && !hasSoup && !hasMainDish && !hasDrink) { // Только салат/стартер - ошибка
-        showNotification("Выберите суп или главное блюдо и напиток");
+        /*showNotification("Выберите суп или главное блюдо и напиток");*/
         return false;
     }else if (!hasDrink && (hasSoup || hasMainDish || hasSaladStarter)) {
-        showNotification("Выберите напиток");
+        /*showNotification("Выберите напиток");*/
         return false;
     } else if (hasSoup && !(hasMainDish || hasSaladStarter)) { // Только суп - ошибка
-        showNotification("Выберите главное блюдо/салат/стартер");
+        /*showNotification("Выберите главное блюдо/салат/стартер");*/
         return false;
     }else if ((hasSaladStarter || hasMainDish) && !hasSoup && hasDrink) {
-        showNotification("Выберите суп");
+        /*showNotification("Выберите суп");*/
         return false;
     }
     else if ((hasDrink || hasDesert) && !hasMainDish && !(hasSoup && hasSaladStarter)) { //Напиток/Десерт без главного - ошибка
-        showNotification("Выберите суп");
+        /*showNotification("Выберите суп");*/
         return false;
     }
     else {

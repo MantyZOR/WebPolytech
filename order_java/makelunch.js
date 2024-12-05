@@ -56,14 +56,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                 dishElement.classList.toggle('selected');
                 dishElement.querySelector('button').classList.toggle('selected');
                 updateOrderSummary(); // Вызываем функцию для обновления суммарной стоимости и отображения панели
-                checkOrderAvailability();
+
                 console.log(dish.id)
                 console.log(JSON.parse(localStorage.getItem('selectedDishes')))
             });
         });
         // Восстановление состояния при загрузке страницы
-        updateOrderSummary();
-        checkOrderAvailability();
+
         const selectedDishes = JSON.parse(localStorage.getItem('selectedDishes')) || [];
         selectedDishes.forEach(dishId => {
             const dish = sortedDishes.find(d => d.id === parseInt(dishId)); // или  +dishId
@@ -71,7 +70,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 totalPrice += dish.price;
             }
         });
-
+        updateOrderSummary();
     } catch (error) {
         console.error("Ошибка при загрузке данных:", error);
     }

@@ -117,3 +117,10 @@
 .empty-order-message-href{
     background-color: white;
 }
+
+#orderFormSection {
+    display: flex;
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: center; /* Центрирование по вертикали */
+
+}
