@@ -64,7 +64,7 @@
     margin: 0 auto;
 }
 
-/* Стили для модальных окон */
+/* Стили для ��одальных окон */
 .modal-body {
     margin: 20px 0;
 }
@@ -121,12 +121,12 @@
 }
 
 .modal-footer button:first-child {
-    background-color: #28a745;
+    background-color: #6c757d;
     color: white;
 }
 
 .modal-footer button:last-child {
-    background-color: #6c757d;
+    background-color: #28a745;
     color: white;
 }
 
@@ -204,4 +204,66 @@
     width: 90%;
     max-width: 600px;
     padding: 20px 30px;
+}
+
+/* Переопределяем стили из lunch.css для формы редактирования */
+#editOrderModal #edit-order-form {
+    display: block !important; /* Вместо grid */
+    grid-template-columns: initial !important;
+    gap: 0 !important;
+    max-width: none !important;
+    background-color: transparent !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Остальные стили для формы редактирования */
+#editOrderModal #edit-order-form .info-row {
+    display: flex !important;
+    margin-bottom: 15px !important;
+    gap: 20px !important;
+    align-items: center !important;
+}
+
+#editOrderModal #edit-order-form input[type="text"],
+#editOrderModal #edit-order-form input[type="tel"],
+#editOrderModal #edit-order-form input[type="email"],
+#editOrderModal #edit-order-form input[type="time"] {
+    width: 55% !important;
+    padding: 8px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+}
+
+#editOrderModal .delivery-type-inputs {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 55% !important; /* Увеличиваем ширину контейнера */
+}
+
+#editOrderModal .radio-label {
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 5px 0 !important;
+    width: 100% !important;
+}
+
+#editOrderModal .radio-label input[type="radio"] {
+    margin: 0 10px 0 0 !important;
+    width: auto !important; /* Фиксируем ширину radio */
+}
+
+/* Стиль для контейнера времени доставки */
+#editOrderModal .time-container {
+    width: 55% !important;
+}
+
+#editOrderModal input[type="time"] {
+    width: 100% !important;
+    padding: 8px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
 }

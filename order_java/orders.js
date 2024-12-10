@@ -230,7 +230,7 @@ async function editOrder(orderId) {
         if (!dishesResponse.ok) throw new Error('Ошибка при получении данных блюд');
         const dishes = await dishesResponse.json();
 
-        // Создаем форму и добавляем ей id
+        // Создаем форму и дбавляем ей id
         const modalBody = document.querySelector('#editOrderModal .modal-body');
         modalBody.innerHTML = `
             <form id="edit-order-form">
@@ -266,8 +266,12 @@ async function editOrder(orderId) {
                 </div>
                 <div class="info-row">
                     <label>Время доставки:</label>
-                    <input type="time" value="${order.delivery_time || ''}" name="delivery_time"
-                        ${order.delivery_type === 'now' ? 'disabled' : ''}>
+                    <div class="time-container">
+                        <input type="time" 
+                               value="${order.delivery_time || ''}" 
+                               name="delivery_time"
+                               ${order.delivery_type === 'now' ? 'disabled' : ''}>
+                    </div>
                 </div>
                 <div class="info-row">
                     <label>Телефон:</label>
@@ -277,16 +281,73 @@ async function editOrder(orderId) {
                     <label>Email:</label>
                     <input type="email" value="${order.email}" name="email" required>
                 </div>
-                <div class="info-row">
+                <div class="comment-container">
                     <label>Комментарий:</label>
                     <textarea name="comment">${order.comment || ''}</textarea>
                 </div>
             </form>
+            <div class="info-row">
+                <label>Состав заказа</label>
+            </div>
         `;
 
-        // Устанавливаем идентификатор заказа в атрибут data-order-id формы
+        // Добавляем информацию о блюдах
+        const dishTypes = [
+            { id: 'soup_id', label: 'Суп' },
+            { id: 'main_course_id', label: 'Основное блюдо' },
+            { id: 'salad_id', label: 'Салат' },
+            { id: 'drink_id', label: 'Напиток' },
+            { id: 'dessert_id', label: 'Десерт' }
+        ];
+
+        dishTypes.forEach(type => {
+            if (order[type.id]) {
+                const dish = dishes.find(d => d.id === order[type.id]);
+                if (dish) {
+                    const div = document.createElement('div');
+                    div.className = 'info-row';
+                    div.innerHTML = `
+                        <label>${type.label}:</label>
+                        <span>${dish.name} (${dish.price}₽)</span>
+                    `;
+                    modalBody.appendChild(div);
+                }
+            }
+        });
+
+        // Добавляем стоимость
+        const totalPrice = calculateTotalPrice(order, dishes);
+        const totalDiv = document.createElement('div');
+        totalDiv.className = 'info-row';
+        totalDiv.innerHTML = `
+            <label>Стоимость: ${totalPrice}₽</label>
+            <span></span>
+        `;
+        modalBody.appendChild(totalDiv);
+
+        // Добавляем обработчики после создания формы
         const form = document.getElementById('edit-order-form');
         form.dataset.orderId = orderId;
+
+        // Добавляем обработчики для радио-кнопок
+        const radioButtons = form.querySelectorAll('input[name="delivery_type"]');
+        const timeInput = form.querySelector('input[name="delivery_time"]');
+
+        radioButtons.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                if (e.target.value === 'by_time') {
+                    timeInput.disabled = false;
+                    timeInput.required = true;
+                    if (!timeInput.value) {
+                        timeInput.value = '12:00';
+                    }
+                } else {
+                    timeInput.disabled = true;
+                    timeInput.required = false;
+                    timeInput.value = '';
+                }
+            });
+        });
 
         showModal('editOrderModal');
     } catch (error) {
@@ -494,7 +555,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Обработчик изменения типа доставки
 function handleDeliveryTypeChange(event) {
-    const timeInput = document.getElementById('edit-time');
+    const timeInput = document.querySelector('input[name="delivery_time"]');
     if (event.target.value === 'by_time') {
         timeInput.disabled = false;
         timeInput.required = true;
