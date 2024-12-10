@@ -142,7 +142,7 @@ async function showOrderDetails(orderId) {
                 <label>Дата оформления:</label>
                 <span>${formatDate(order.created_at)}</span>
             </div>
-            <div class="info-row section-header">
+            <div class="info-row">
                 <label>Доставка</label>
             </div>
             <div class="info-row">
@@ -154,7 +154,7 @@ async function showOrderDetails(orderId) {
                 <span>${order.delivery_address}</span>
             </div>
             <div class="info-row">
-                <label>Время доста��ки:</label>
+                <label>Время доставки:</label>
                 <span>${order.delivery_type === 'by_time' 
                     ? order.delivery_time.slice(0, 5)
                     : 'Как можно скорее (с 07:00 до 23:00)'}</span>
@@ -169,9 +169,12 @@ async function showOrderDetails(orderId) {
             </div>
             <div class="info-row">
                 <label>Комментарий:</label>
-                <span>${order.comment || 'Нет комментария'}</span>
             </div>
-            <div class="info-row section-header">
+            <div class="info-row">
+                <span class="comment">${order.comment || '-Нет комментария-'}</span>
+            </div>
+
+            <div class="info-row">
                 <label>Состав заказа</label>
             </div>
         `;
@@ -227,93 +230,63 @@ async function editOrder(orderId) {
         if (!dishesResponse.ok) throw new Error('Ошибка при получении данных блюд');
         const dishes = await dishesResponse.json();
 
+        // Создаем форму и добавляем ей id
         const modalBody = document.querySelector('#editOrderModal .modal-body');
         modalBody.innerHTML = `
-            <div class="info-row">
-                <label>Дата оформления:</label>
-                <span>${formatDate(order.created_at)}</span>
-            </div>
-            <div class="info-row section-header">
-                <label>Доставка</label>
-            </div>
-            <div class="info-row">
-                <label>Имя получателя:</label>
-                <input type="text" value="${order.full_name}" name="full_name" required>
-            </div>
-            <div class="info-row">
-                <label>Адрес доставки:</label>
-                <input type="text" value="${order.delivery_address}" name="delivery_address" required>
-            </div>
-            <div class="info-row">
-                <label>Тип доставки:</label>
-                <div class="delivery-type-inputs">
-                    <label class="radio-label">
-                        <input type="radio" name="delivery_type" value="now" 
-                            ${order.delivery_type === 'now' ? 'checked' : ''}>
-                        Как можно скорее
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="delivery_type" value="by_time"
-                            ${order.delivery_type === 'by_time' ? 'checked' : ''}>
-                        Ко времени
-                    </label>
+            <form id="edit-order-form">
+                <div class="info-row">
+                    <label>Дата оформления:</label>
+                    <span>${formatDate(order.created_at)}</span>
                 </div>
-            </div>
-            <div class="info-row">
-                <label>Время доставки:</label>
-                <input type="time" value="${order.delivery_time || ''}" name="delivery_time"
-                    ${order.delivery_type === 'now' ? 'disabled' : ''}>
-            </div>
-            <div class="info-row">
-                <label>Телефон:</label>
-                <input type="tel" value="${order.phone}" name="phone" required>
-            </div>
-            <div class="info-row">
-                <label>Email:</label>
-                <input type="email" value="${order.email}" name="email" required>
-            </div>
-            <div class="info-row">
-                <label>Комментарий:</label>
-                <textarea name="comment">${order.comment || ''}</textarea>
-            </div>
-            <div class="info-row section-header">
-                <label>Состав заказа</label>
-            </div>
+                <div class="info-row section-header">
+                    <label>Доставка</label>
+                </div>
+                <div class="info-row">
+                    <label>Имя получателя:</label>
+                    <input type="text" value="${order.full_name}" name="full_name" required>
+                </div>
+                <div class="info-row">
+                    <label>Адрес доставки:</label>
+                    <input type="text" value="${order.delivery_address}" name="delivery_address" required>
+                </div>
+                <div class="info-row">
+                    <label>Тип доставки:</label>
+                    <div class="delivery-type-inputs">
+                        <label class="radio-label">
+                            <input type="radio" name="delivery_type" value="now" 
+                                ${order.delivery_type === 'now' ? 'checked' : ''}>
+                            Как можно скорее
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="delivery_type" value="by_time"
+                                ${order.delivery_type === 'by_time' ? 'checked' : ''}>
+                            Ко времени
+                        </label>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <label>Время доставки:</label>
+                    <input type="time" value="${order.delivery_time || ''}" name="delivery_time"
+                        ${order.delivery_type === 'now' ? 'disabled' : ''}>
+                </div>
+                <div class="info-row">
+                    <label>Телефон:</label>
+                    <input type="tel" value="${order.phone}" name="phone" required>
+                </div>
+                <div class="info-row">
+                    <label>Email:</label>
+                    <input type="email" value="${order.email}" name="email" required>
+                </div>
+                <div class="info-row">
+                    <label>Комментарий:</label>
+                    <textarea name="comment">${order.comment || ''}</textarea>
+                </div>
+            </form>
         `;
 
-        // Добавляем информацию о блюдах (только для отображения)
-        const dishTypes = [
-            { id: 'soup_id', label: 'Суп' },
-            { id: 'main_course_id', label: 'Основное блюдо' },
-            { id: 'salad_id', label: 'Салат' },
-            { id: 'drink_id', label: 'Напиток' },
-            { id: 'dessert_id', label: 'Десерт' }
-        ];
-
-        dishTypes.forEach(type => {
-            if (order[type.id]) {
-                const dish = dishes.find(d => d.id === order[type.id]);
-                if (dish) {
-                    const div = document.createElement('div');
-                    div.className = 'info-row';
-                    div.innerHTML = `
-                        <label>${type.label}:</label>
-                        <span>${dish.name} (${dish.price}₽)</span>
-                    `;
-                    modalBody.appendChild(div);
-                }
-            }
-        });
-
-        // Добавляем стоимость
-        const totalPrice = calculateTotalPrice(order, dishes);
-        const totalDiv = document.createElement('div');
-        totalDiv.className = 'info-row';
-        totalDiv.innerHTML = `
-            <label>Стоимость: ${totalPrice}₽</label>
-            <span></span>
-        `;
-        modalBody.appendChild(totalDiv);
+        // Устанавливаем идентификатор заказа в атрибут data-order-id формы
+        const form = document.getElementById('edit-order-form');
+        form.dataset.orderId = orderId;
 
         showModal('editOrderModal');
     } catch (error) {
@@ -343,7 +316,7 @@ async function saveOrder() {
             throw new Error(errorData.error || 'Ошибка при сохранении заказа');
         }
 
-        showNotification('Заказ успешно обновлен', 'success');
+        showNotification('Заказ успешно обновле��', 'success');
         closeModal('editOrderModal');
         loadOrders();
     } catch (error) {
@@ -493,7 +466,7 @@ styleSheet.textContent = `
 
 document.head.appendChild(styleSheet);
 
-// Добавляем обработчики закрытия модальных окон
+// Добавляем обработчики зак��ытия модальных окон
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.close-btn').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -532,7 +505,7 @@ function handleDeliveryTypeChange(event) {
     }
 }
 
-// Добавляем обработчики после загрузки DOM
+// Добавл��ем обработчики после загрузки DOM
 document.addEventListener('DOMContentLoaded', () => {
     const deliveryTypeInputs = document.querySelectorAll('input[name="delivery_type"]');
     deliveryTypeInputs.forEach(input => {

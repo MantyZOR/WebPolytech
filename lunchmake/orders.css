@@ -68,20 +68,38 @@
 .info-row {
     display: flex;
     margin-bottom: 15px;
-    gap: 10px;
+    gap: 20px;
+    justify-content: flex-start;
 }
 
 .info-row label {
-    min-width: 150px;
+    width: 45%;
+    text-align: left;
     font-weight: bold;
+    font-style: italic;
 }
+
+.info-row span {
+    width: 55%;
+    text-align: left;
+    padding-left: 0;
+}
+
+
 
 .section-header {
     margin-top: 20px;
+    margin-bottom: 15px;
     font-size: 1.1em;
     color: #333;
     border-bottom: 1px solid #ddd;
     padding-bottom: 5px;
+}
+
+.section-header label {
+    width: 100%;
+    text-align: left;
+    font-style: normal;
 }
 
 .modal-footer {
@@ -137,4 +155,49 @@
     border-radius: 4px;
     z-index: 1001;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.modal-content h3 {
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.modal-content hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 10px 0;
+}
+
+.info-row {
+    display: flex;
+    margin-bottom: 15px;
+    gap: 10px;
+    align-items: center;
+}
+
+.info-row label {
+    min-width: 150px;
+    font-weight: bold;
+    text-align: left;
+}
+
+
+
+.section-header {
+    margin-top: 20px;
+    font-size: 1.1em;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.section-header label {
+    text-align: left;
+}
+
+/* Стили для модального окна */
+.modal-content {
+    width: 90%;
+    max-width: 600px;
+    padding: 20px 30px;
 }
