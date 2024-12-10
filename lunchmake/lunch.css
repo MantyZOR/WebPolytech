@@ -32,6 +32,7 @@ table, th, tr, td{
     border-collapse: collapse; /*Добавляет границы (бортики)*/
     text-align: center;
     font-family: Caveat, Georgia, Times, 'Times New Roman', serif;
+
 }
 
 /*Настройка навигации*/

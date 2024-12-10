@@ -60,39 +60,31 @@ function checkOrder() {
     const hasDrink = order.drink !== null;
     const hasDesert = order.dessert !== null;
 
-    // Проверка полностью собранных комбинаций (без изменений)
-    if (hasSoup && hasMainDish && hasSaladStarter && hasDrink) return true;
-    if (hasSoup && hasMainDish && hasDrink && !hasSaladStarter) return true;
-    if (hasSoup && hasSaladStarter && hasDrink && !hasMainDish) return true;
-    if (!hasSoup && hasMainDish && hasSaladStarter && hasDrink) return true;
-    if (!hasSoup && !hasSaladStarter && hasMainDish && hasDrink) return true;
+    // Проверяем допустимые комбинации
+    const validCombinations = [
+        // Полный набор
+        hasSoup && hasMainDish && hasSaladStarter && hasDrink,
+        // Суп + главное + напиток
+        hasSoup && hasMainDish && hasDrink && !hasSaladStarter,
+        // Суп + салат + напиток
+        hasSoup && !hasMainDish && hasSaladStarter && hasDrink,
+        // Главное + салат + напиток
+        !hasSoup && hasMainDish && hasSaladStarter && hasDrink,
+        // Главное + напиток
+        !hasSoup && hasMainDish && !hasSaladStarter && hasDrink
+    ];
 
+    // Если хотя бы одна комбинация верна - заказ правильный
+    if (validCombinations.some(combo => combo === true)) {
+        return true;
+    }
+
+    // Пустой заказ
     if (!hasSoup && !hasMainDish && !hasSaladStarter && !hasDrink && !hasDesert) {
-        /*showNotification("Ничего не выбрано. Выберите блюда для заказа");*/
-        return false;
-    } else if (hasSoup && !hasMainDish && !hasSaladStarter && !hasDrink) { // Только суп - ошибка
-        /*showNotification("Выберите главное блюдо/салат/стартер и напиток");*/
-        return false;
-    } else if (hasSaladStarter && !hasSoup && !hasMainDish && !hasDrink) { // Только салат/стартер - ошибка
-        /*showNotification("Выберите суп или главное блюдо и напиток");*/
-        return false;
-    }else if (!hasDrink && (hasSoup || hasMainDish || hasSaladStarter)) {
-        /*showNotification("Выберите напиток");*/
-        return false;
-    } else if (hasSoup && !(hasMainDish || hasSaladStarter)) { // Только суп - ошибка
-        /*showNotification("Выберите главное блюдо/салат/стартер");*/
-        return false;
-    }else if ((hasSaladStarter || hasMainDish) && !hasSoup && hasDrink) {
-        /*showNotification("Выберите суп");*/
         return false;
     }
-    else if ((hasDrink || hasDesert) && !hasMainDish && !(hasSoup && hasSaladStarter)) { //Напиток/Десерт без главного - ошибка
-        /*showNotification("Выберите суп");*/
-        return false;
-    }
-    else {
-        return true;  // Заказ корректен
-    }
+
+    return false;
 }
 
 function showNotification(message) {
