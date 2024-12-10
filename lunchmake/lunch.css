@@ -28,7 +28,7 @@ footer {
 
 table, th, tr, td{
     padding: 10px;
-    border: 2px black solid;
+    border: none;
     border-collapse: collapse; /*Добавляет границы (бортики)*/
     text-align: center;
     font-family: Caveat, Georgia, Times, 'Times New Roman', serif;

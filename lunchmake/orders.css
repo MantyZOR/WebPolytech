@@ -10,6 +10,10 @@
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
+#orders-table thead {
+    border-top: 1px solid #ddd; /* Добавляем линию сверху заголовков */
+    border-bottom: 1px solid #ddd; /* Оставляем линию снизу заголовков */
+}
 
 #orders-table th {
     background-color: #f8f9fa;

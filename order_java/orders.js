@@ -316,7 +316,7 @@ async function saveOrder() {
             throw new Error(errorData.error || 'Ошибка при сохранении заказа');
         }
 
-        showNotification('Заказ успешно обновле��', 'success');
+        showNotification('Заказ успешно обновлен', 'success');
         closeModal('editOrderModal');
         loadOrders();
     } catch (error) {
@@ -466,7 +466,7 @@ styleSheet.textContent = `
 
 document.head.appendChild(styleSheet);
 
-// Добавляем обработчики зак��ытия модальных окон
+// Добавляем обработчики закрытия модальных окон
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.close-btn').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -505,7 +505,7 @@ function handleDeliveryTypeChange(event) {
     }
 }
 
-// Добавл��ем обработчики после загрузки DOM
+// Добавляем обработчики после загрузки DOM
 document.addEventListener('DOMContentLoaded', () => {
     const deliveryTypeInputs = document.querySelectorAll('input[name="delivery_type"]');
     deliveryTypeInputs.forEach(input => {
