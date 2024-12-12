@@ -54,37 +54,43 @@ function updateOrderDisplay() {
 }
 
 function checkOrder() {
-    const hasSoup = order.soup !== null;
-    const hasMainDish = order["main-course"] !== null;
-    const hasSaladStarter = order.salad !== null;
-    const hasDrink = order.drink !== null;
-    const hasDesert = order.dessert !== null;
+    const selectedDishesIds = JSON.parse(localStorage.getItem('selectedDishes')) || [];
+    
+    // Если нет выбранных блюд, возвращаем false
+    if (selectedDishesIds.length === 0) {
+        return false;
+    }
+
+    // Подсчитываем количество блюд каждой категории
+    let categories = {
+        soup: 0,
+        "main-course": 0,
+        salad: 0,
+        drink: 0
+    };
+
+    selectedDishesIds.forEach(dishId => {
+        const dish = sortedDishes.find(d => d.id === parseInt(dishId));
+        if (dish && categories.hasOwnProperty(dish.category)) {
+            categories[dish.category]++;
+        }
+    });
 
     // Проверяем допустимые комбинации
     const validCombinations = [
         // Полный набор
-        hasSoup && hasMainDish && hasSaladStarter && hasDrink,
+        categories.soup >= 1 && categories["main-course"] >= 1 && categories.salad >= 1 && categories.drink >= 1,
         // Суп + главное + напиток
-        hasSoup && hasMainDish && hasDrink && !hasSaladStarter,
+        categories.soup >= 1 && categories["main-course"] >= 1 && categories.drink >= 1,
         // Суп + салат + напиток
-        hasSoup && !hasMainDish && hasSaladStarter && hasDrink,
+        categories.soup >= 1 && categories.salad >= 1 && categories.drink >= 1,
         // Главное + салат + напиток
-        !hasSoup && hasMainDish && hasSaladStarter && hasDrink,
+        categories["main-course"] >= 1 && categories.salad >= 1 && categories.drink >= 1,
         // Главное + напиток
-        !hasSoup && hasMainDish && !hasSaladStarter && hasDrink
+        categories["main-course"] >= 1 && categories.drink >= 1
     ];
 
-    // Если хотя бы одна комбинация верна - заказ правильный
-    if (validCombinations.some(combo => combo === true)) {
-        return true;
-    }
-
-    // Пустой заказ
-    if (!hasSoup && !hasMainDish && !hasSaladStarter && !hasDrink && !hasDesert) {
-        return false;
-    }
-
-    return false;
+    return validCombinations.some(combo => combo === true);
 }
 
 function showNotification(message) {

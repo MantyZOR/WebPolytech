@@ -54,6 +54,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             orderForm.addEventListener('submit', async (event) => {
                 event.preventDefault();
+                
+                if (!checkOrder()) {
+                    alert("Пожалуйста, выберите правильную комбинацию блюд");
+                    return;
+                }
+                
                 const formData = new FormData(orderForm);
 
                 /*if (!checkOrder()) { // Проверяем заказ

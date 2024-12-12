@@ -64,7 +64,7 @@
     margin: 0 auto;
 }
 
-/* Стили для ��одальных окон */
+/* Стили для одальных окон */
 .modal-body {
     margin: 20px 0;
 }
@@ -266,4 +266,35 @@
     padding: 8px !important;
     border: 1px solid #ddd !important;
     border-radius: 4px !important;
+}
+
+/* Стили для правильного позиционирования футера */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+footer {
+    margin-top: auto;
+    width: 100%;
+    padding: 20px 0;
+}
+
+/* Для контейнера внутри футера */
+footer > div {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Стили для секции контактов в футере */
+.contacts {
+    text-align: center;
 }
